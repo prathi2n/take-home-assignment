@@ -1,0 +1,21 @@
+# Install a package on a Linux server when there is no internet connection
+
+This document provide instructions to install a package on a Linux server when there is no internet connection.
+
+## Steps:
+   
+1. Download the required package in the machine which has internet connection.
+
+2. Copy the package to the required server using WinSCP
+
+## Change to the directory containing the .deb files
+3. cd /path/to/package/files
+
+4. Install with the following commands.
+
+   ## Install all .deb files in the directory
+		sudo dpkg -i *.deb
+		
+   ## Install all .rpm files in the directory
+		sudo yum localinstall *.rpm
+

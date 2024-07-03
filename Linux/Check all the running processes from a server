@@ -1,0 +1,9 @@
+# Check all the running processes from a server
+
+This document provide instructions to check all the running processes from a server.
+
+## Steps:
+
+1. Open the terminal.
+2. Run the following command
+   ps aux

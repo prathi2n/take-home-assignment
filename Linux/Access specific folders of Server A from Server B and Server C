@@ -1,0 +1,48 @@
+# Access specific folders of Server A from Server B and Server C
+
+This document provide instructions to access specific folders of Server A from Server B and Server C.
+
+using sshfs
+## Steps:
+1.	Install SSHFS:
+	## On both Server B and Server C, install SSHFS using following command.
+	sudo apt-get install sshfs
+
+2.	Create a mount point:
+	## Create a directory where you want to mount the remote folder
+	mkdir ~/remote_folder
+
+3.	Mount the remote folder:
+	sshfs <SSH username>@<Server Host name / IP>:/path/to/remote/folder ~/remote_folder
+
+4.	Unmount the remote folder:
+	fusermount -u ~/remote_folder
+
+NFS (Network File System)
+## Steps:
+1.	Install NFS server on Server A:
+	sudo apt-get install nfs-kernel-server
+	
+2.	Edit the NFS exports file on Server A:
+	## Add the directories you want to share to ‘/etc/exports’
+	/path/to/shared/folder serverB_IP(rw,sync,no_subtree_check) serverC_IP(rw,sync,no_subtree_check)
+	
+3.	Export the shared directories:
+	sudo exportfs -a
+	
+4.	Start the NFS server:
+	sudo systemctl start nfs-kernel-server
+	
+5.	Install NFS client on Server B and Server C:
+	sudo apt-get install nfs-common
+	
+6.	Create a mount point and mount the NFS share on Server B and Server C:
+	mkdir ~/remote_folder
+	sudo mount serverA:/path/to/shared/folder ~/remote_folder
+	
+7.	Mount the NFS Share manually
+	sudo mount <serverA host name/IP>:/srv/nfs /mnt/nfs
+	
+8.	Add an entry to ‘/etc/fstab’ to make NFS mount permanent:
+	<serverA host name/IP>:/path/to/shared/folder  /path/to/local/mount  nfs  defaults  0  0
+

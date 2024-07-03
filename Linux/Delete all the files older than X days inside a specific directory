@@ -1,0 +1,10 @@
+# Delete all the files older than X days inside a specific directory
+
+This document provide instructions to delete all the files older than X days inside a specific directory.
+
+## Steps:
+
+1. Open the terminal.
+2. Run the following command
+   ## replace X with number of days in the below.
+   find /path/to/directory -type f -mtime +X -exec rm -f {} \;

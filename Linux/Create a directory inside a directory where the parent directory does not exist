@@ -1,0 +1,12 @@
+# Create a directory inside a directory where the parent directory does not exist
+
+This document provide instructions to create a directory inside a directory where the parent directory does not exist.
+
+## Steps:
+
+1. Open the terminal.
+2. Run the following command
+   mkdir -p parentDir/childDir
+
+## The -p option tells mkdir to create any necessary parent directories.
+## parentDir is the parent directory that will also be created if it does not exist.
