@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: custom-python-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: custom-python-app
+  template:
+    metadata:
+      labels:
+        app: custom-python-app
+    spec:
+      containers:
+      - name: custom-python-container
+        image: prathi2n/my-python-app:latest
+        ports:
+        - containerPort: 80
+
